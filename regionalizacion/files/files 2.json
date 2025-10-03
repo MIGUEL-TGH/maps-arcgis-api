@@ -1,0 +1,31 @@
+[
+   {
+      "title": "s_norte_1", 
+      "name": "Sierra Norte - Ahuacatlán",
+      "color": [ 225, 224, 170, 0.4 ],
+      "files":[
+         "./map_layers/Pue_M006.min.json",
+         "./map_layers/Pue_M008.min.json",
+         "./map_layers/Pue_M014.min.json",
+         "./map_layers/Pue_M016.min.json",
+         "./map_layers/Pue_M028.min.json",
+         "./map_layers/Pue_M030.min.json",
+         "./map_layers/Pue_M039.min.json",
+         "./map_layers/Pue_M053.min.json",
+         "./map_layers/Pue_M068.min.json",
+         "./map_layers/Pue_M078.min.json",
+         "./map_layers/Pue_M083.min.json",
+         "./map_layers/Pue_M123.min.json",
+         "./map_layers/Pue_M162.min.json",
+         "./map_layers/Pue_M167.min.json",
+         "./map_layers/Pue_M172.min.json",
+         "./map_layers/Pue_M200.min.json",
+         "./map_layers/Pue_M202.min.json",
+         "./map_layers/Pue_M208.min.json",
+         "./map_layers/Pue_M210.min.json",
+         "./map_layers/Pue_M212.min.json",
+         "./map_layers/Pue_M215.min.json"
+      ]
+   }
+
+]

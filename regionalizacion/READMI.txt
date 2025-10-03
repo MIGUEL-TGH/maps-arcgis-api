@@ -1,0 +1,6 @@
+ <!--COMPONENTS-->
+<script src="frameworks/vue/vue.js"></script>
+<script src="frameworks/axios/axios.min.js"></script>
+<!--API ARCGIS-->
+<link rel="stylesheet" href="https://js.arcgis.com/4.23/esri/themes/light/main.css"/>
+<script src="https://js.arcgis.com/4.23/"></script>

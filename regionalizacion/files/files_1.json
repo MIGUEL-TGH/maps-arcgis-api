@@ -1,0 +1,24 @@
+[
+
+    {"number": "001", "municipio": "Acajete", "region": "ANGELOPOLIS", "color":[14, 139, 173, 0.5], "url": "./map_layers/Pue_M001.min.json"},
+    {"number": "002", "municipio": "Acateno", "region": "S. NORORIENTAL", "color":[222, 125, 55, 0.5], "url": "./map_layers/Pue_M002.min.json"},
+    {"number": "003", "municipio": "Acatlán", "region": "MIXTECA", "color":[173, 14, 168, 0.5], "url": "./map_layers/Pue_M003.min.json"},
+    {"number": "004", "municipio": "Acatzingo", "region": "V. SERDÁN", "color":[12, 145, 56, 0.5], "url": "./map_layers/Pue_M004.min.json"},
+    {"number": "005", "municipio": "Acteopan", "region": "V. ATLIXCO Y MATAMOROS", "color":[14, 139, 173, 0.5], "url": "./map_layers/Pue_M005.min.json"},
+    {"number": "006", "municipio": "Ahuacatlán", "region": "S. NORTE - AHUACATLÁN", "color":[118, 173, 14, 0.5], "url": "./map_layers/Pue_M006.min.json"},
+    {"number": "007", "municipio": "Ahuatlán", "region": "MIXTECA", "color":[173, 14, 168, 0.5], "url": "./map_layers/Pue_M007.min.json"},
+    {"number": "008", "municipio": "Ahuazotepec", "region": "S. NORTE - AHUACATLÁN", "color":[118, 173, 14, 0.5], "url": "./map_layers/Pue_M008.min.json"},
+    {"number": "009", "municipio": "Ahuehuetitla", "region": "MIXTECA", "color":[173, 14, 168, 0.5], "url": "./map_layers/Pue_M009.min.json"},
+    {"number": "010", "municipio": "Ajalpan", "region": "S. NEGRA", "color":[173, 14, 93, 0.5], "url": "./map_layers/Pue_M010.min.json"},
+    
+    {"number": "011", "municipio": "Albino Zertuche", "region": "MIXTECA", "color":[173, 14, 168, 0.5], "url": "./map_layers/Pue_M011.min.json"},
+    {"number": "012", "municipio": "Aljojuca", "region": "V. SERDÁN", "color":[12, 145, 56, 0.5], "url": "./map_layers/Pue_M012.min.json"},
+    {"number": "013", "municipio": "Altepexi", "region": "TEHUACAN", "color":[173, 43, 14, 0.5], "url": "./map_layers/Pue_M013.min.json"},
+    {"number": "014", "municipio": "Amixtlán", "region": "S. NORTE - AHUACATLÁN", "color":[118, 173, 14, 0.5], "url": "./map_layers/Pue_M014.min.json"},
+    {"number": "015", "municipio": "Amozoc", "region": "ANGELOPOLIS", "color":[14, 139, 173, 0.5], "url": "./map_layers/Pue_M015.min.json"},
+    {"number": "016", "municipio": "Aquixtla", "region": "S. NORTE - AHUACATLÁN", "color":[118, 173, 14, 0.5], "url": "./map_layers/Pue_M016.min.json"},
+    {"number": "017", "municipio": "Atempan", "region": "S. NORORIENTAL", "color":[222, 125, 55, 0.5], "url": "./map_layers/Pue_M017.min.json"},
+    {"number": "018", "municipio": "Atexcal", "region": "TEHUACAN", "color":[173, 43, 14, 0.5], "url": "./map_layers/Pue_M018.min.json"},
+    {"number": "019", "municipio": "Atlixco", "region": "V. ATLIXCO Y MATAMOROS", "color":[14, 139, 173, 0.5], "url": "./map_layers/Pue_M019.min.json"},
+    {"number": "020", "municipio": "Atoyatempan", "region": "V. SERDÁN", "color":[12, 145, 56, 0.5], "url": "./map_layers/Pue_M020.min.json"}
+]
