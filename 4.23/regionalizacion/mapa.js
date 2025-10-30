@@ -1,4 +1,4 @@
-var vector = [
+const vector = [
    "streets-navigation-vector",
    "streets",
    "topo-vector",
@@ -41,51 +41,72 @@ function LoadMap() {
        });
    });
 }
+// --------------------------------------------------------------------------------------------------------------
 
+async function setSleep(ms){
+   try {
+      return new Promise(resolve => setTimeout(resolve, ms));
+   } catch (error) {
+      console.log(error);
+   } finally { }
+}
+async function chunkArray(values) {
+   const chunks = [];
+   const { items, chunkSize } = values;
+   for (let i = 0; i < items.length; i += chunkSize) {
+      chunks.push(items.slice(i, i + chunkSize));
+   }
+   return chunks;
+}
 async function loadData(url) {
-   let result = [];
-   await fetch(url)
-       .then(response => {
-           if (!response.ok) {
-               throw new Error('Network response was not ok');
-           }
-           return response.json();
-       })
-       .then(data => {
-           result = data;
-       })
-       .catch(error => {
-           console.error('There has been a problem with your fetch operation:', error);
-       });
-
-   return result;
+   try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('Network response was not ok');
+      return await response.json();
+   } catch (error) {
+      console.error('Fetch error:', error);
+      return [];
+   }
 }
 
 async function renderJson(items) {
-   let result = {
+   const result = {
       type: "FeatureCollection",
-      name: "",
+      name: "Feature",
       crs: { type: "name", properties: { name: "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-      features:[]
-   }
+      features: []
+   };
 
-   for(const item of items){
-      await loadData(item.url).then(element => {
-         result.features.push(...element.features);
+   const chunks = await chunkArray({ items, chunkSize: 10 }); // carga 10 archivos por bloque
+   for (const chunk of chunks) {
+      const dataArray = await Promise.all(chunk.map(item => loadData(item.url)));
+      dataArray.forEach(data => {
+         if (data.features) result.features.push(...data.features);
       });
-      // result.name = "FeatureAngelopolis"
-      result.name = "Feature"
-    }
+   }
 
    return result;
 }
+async function loadMunicipios() {
+   // Cargar todos los datos en paralelo
+   const [items1, items2, items3] = await Promise.all([
+      this.loadData('files/municipios_1.json'),
+      this.loadData('files/municipios_2.json'),
+      this.loadData('files/cedes.json')
+   ])
+
+   // Dibujar los gráficos en orden
+   await this.DrawGraphic(items1, [16, 188, 97], 1)
+   await this.DrawGraphic(items2, [9, 72, 109], 1)
+   await this.DrawGraphic(items3, [], 2)
+}
 
 async function loadLayers() {
-   await AddGeoJSONLayer({ url: './map_layers/puebla.geojson', color: [130, 130, 130, 0.1], type: 'files' });
+   await AddGeoJSONLayer({ url: 'https://raw.githubusercontent.com/miguel-tgh/maps-arcgis-api/main/map_layers/puebla/puebla.geojson', color: [130, 130, 130, 0.1], type: 'files' });
    await loadMunicipios();
-   
+
    const items = await loadData('./files/layers.json');
-   const regions = [
+   const regions = [ 
       { region: 'S. NORTE - XICOTEPEC', color: [27, 94, 32, 0.5] },
       { region: 'S. NORTE - ZACATLÁN', color: [118, 173, 14, 0.5] },
       { region: 'S. NORORIENTAL', color: [222, 125, 55, 0.5] },
@@ -97,22 +118,20 @@ async function loadLayers() {
       { region: 'S. NEGRA', color: [173, 14, 93, 0.5] }
    ];
 
-   for (const region of regions) {
+   await Promise.all(regions.map(async region => {
       const regionItems = items.filter(e => e.region === region.region);
       const jsonRegion = await renderJson(regionItems);
+      // console.log(jsonRegion);
       await AddGeoJSONLayer({ data: jsonRegion, color: region.color, type: 'rendered' });
-   }
-}
+   }));
 
-async function loadMunicipios() {
-   const items_1 = await loadData('./files/municipios_1.json');
-   await DrawGraphic(items_1, [16, 188, 97], 1);
+   // for (const element of regions) {
+   //    const regionItems = items.filter(e => e.region === element.region);
+   //    const jsonRegion = await renderJson(regionItems);
+   //    console.log('jsonRegion-->', jsonRegion);
+   //    await AddGeoJSONLayer({ data: jsonRegion, color: element.color, type: 'rendered' });
+   // }
 
-   const items_2 = await loadData('./files/municipios_2.json');
-   await DrawGraphic(items_2, [9, 72, 109], 1);
-
-   const items_3 = await loadData('./files/cedes.json');
-   await DrawGraphic(items_3, [], 2);
 }
 
 function AddGeoJSONLayer(item){
@@ -158,7 +177,6 @@ function AddGeoJSONLayer(item){
       map.add(Layer);
    });
 }
-
 function DrawGraphic(items, color, type){
    require([
      "esri/Graphic",
