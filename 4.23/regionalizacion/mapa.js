@@ -106,6 +106,7 @@ async function loadLayers() {
    await loadMunicipios();
 
    const items = await loadData('./files/layers.json');
+   // const items = await loadData('./files/layers_v1.json');
    const regions = [ 
       { region: 'S. NORTE - XICOTEPEC', color: [27, 94, 32, 0.5] },
       { region: 'S. NORTE - ZACATLÁN', color: [118, 173, 14, 0.5] },
@@ -116,6 +117,7 @@ async function loadLayers() {
       { region: 'MIXTECA', color: [239, 83, 80, 0.5] },
       { region: 'TEHUACAN', color: [173, 43, 14, 0.5] },
       { region: 'S. NEGRA', color: [173, 14, 93, 0.5] }
+      // { region: 'S. NEGRA', color: [130, 130, 130, 0.1] }
    ];
 
    await Promise.all(regions.map(async region => {
